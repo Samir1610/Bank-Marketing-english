@@ -251,6 +251,66 @@ This Power BI dashboard was created to analyze the Bank Marketing dataset with t
 
 - Top Client Profiles: Lists client profiles with the highest total count and highest conversion rates based on job, marital status, and education.
 
+  ## DAX: calculated measures and columns
+
+  ### Calculated measures
+
+- **Total Clients**: `= COUNTROWS('public bank_data')`
+- **Clients With Deposit**: `= CALCULATE(COUNTROWS('public bank_data'), 'public bank_data'[deposit]= "yes")`
+- **Conversion Rate**: `= DIVIDE([Clients With Deposit], [Total Clients]) * 100`
+- **Balance Q1**: `= PERCENTILEX.INC('public bank_data', 'public bank_data'[balance], 0.25)`
+- **Balance Q3**: `= PERCENTILEX.INC('public bank_data', 'public bank_data'[balance], 0.75)`
+
+### Calculated columns
+
+- **Age Group**: Categorizes clients into age groups (Under 30, 30s, 40s, 50s, 60+).
+  
+```dax
+Age Group = 
+SWITCH(
+    TRUE(),
+    'public bank_data'[age] < 30, "Under 30",
+    'public bank_data'[age] >= 30 &&  'public bank_data'[age] <= 39, "30s",
+    'public bank_data'[age] >= 40 &&  'public bank_data'[age] <= 49, "40s",
+    'public bank_data'[age] >= 50 &&  'public bank_data'[age] <= 59, "50s",
+    "60 and above"
+)
+```
+  
+- **Balance Group**: Segments clients by balance into Low (>25%), Medium(25-75%), and High balance groups(>75%).
+
+```dax
+Balance Group = 
+VAR Q1 = PERCENTILEX.INC('public bank_data', 'public bank_data'[balance], 0.25)
+VAR Q3 = PERCENTILEX.INC('public bank_data', 'public bank_data'[balance], 0.75)
+RETURN
+    SWITCH(
+        TRUE(),
+        'public bank_data'[balance] <= Q1, "<25%",
+        'public bank_data'[balance] > Q1 && 'public bank_data'[balance] <= Q3, "25-75%",
+        'public bank_data'[balance] > Q3, ">75%"
+    )
+```
+  
+- **Client Profile**: Combines job, marital status, and education into a single profile string.
+
+```dax
+Client Profile = 
+'public bank_data'[job] & " - " & 'public bank_data'[marital] & " - " & 'public bank_data'[education]
+```
+- **Count of Client Profile**: Counts how many times each client profile appears, useful for filtering profiles with a significant number of clients.
+
+  ```dax
+Count of client profile = 
+CALCULATE(
+    COUNTROWS('public bank_data'),
+    FILTER(
+        'public bank_data',
+        'public bank_data'[Client Profile] = EARLIER('public bank_data'[Client Profile])
+    )
+)
+```
+
 🔹 General Results:
 
 - Overall conversion rate: 11.70% (5,289 clients out of 45,000).
