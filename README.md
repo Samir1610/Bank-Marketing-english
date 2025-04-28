@@ -261,5 +261,5 @@ This Power BI dashboard was created to analyze the Bank Marketing dataset with t
 
 The dashboard allows dynamic filtering by age group, balance group, contact method, and education level, offering a flexible exploration of the data and supporting data-driven marketing strategies.
 
-- [📄 Dashboard](./Bank Marketing dashboard.pdf) : PDF document for visualization.
-- [📊 Bank Marketing Dashboard.pbix](): Power Bi document for editing.
+- [📄 Dashboard](./Bank%20Marketing%20dashboard.pdf) : PDF document for visualization.
+- [📊 Bank Marketing Dashboard.pbix](./Bank%20Marketing%20dashboard.pbix): Power Bi document for editing.
