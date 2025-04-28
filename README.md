@@ -241,7 +241,7 @@ LIMIT 10;
 
 ## Power Bi
 
-This Power BI dashboard was created to analyze the Bank Marketing dataset with the goal of identifying the client segments most likely to subscribe to a term deposit.The dashboard provides an interactive visualization of the main conversion drivers, including:
+This Power BI dashboard was created to analyze the Bank Marketing dataset with the goal of identifying the client segments most likely to subscribe to a term deposit. The dashboard allows dynamic filtering by age group, balance group, contact method, and education level, offering a flexible exploration of the data and supporting data-driven marketing strategies. It provides an interactive visualization of the main conversion drivers, including:
 
 - Conversion Rate by Job: Highlights the top-performing job categories like students and retirees.
 
@@ -325,8 +325,6 @@ CALCULATE(
 - Younger clients, retirees, and students are priority segments for future marketing efforts.
 
 ## Dashboard
-
-The dashboard allows dynamic filtering by age group, balance group, contact method, and education level, offering a flexible exploration of the data and supporting data-driven marketing strategies.
 
 - [📄 Dashboard](./Bank%20Marketing%20dashboard.pdf) : PDF document for visualization.
 - [📊 Bank Marketing Dashboard.pbix](./Bank%20Marketing%20dashboard.pbix): Power Bi document for editing.
