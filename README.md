@@ -6,7 +6,11 @@ In this project, I used the Bank Marketing dataset to conduct an exploratory ana
 - [Data](#data)
 - [Analysis](#analysis)
 - [Suggestions](#suggestions)
+  
 - [Power Bi](#power-bi)
+- [DAX](#dax)
+- [General results](#general-results)
+- [Dashboard](#dashboard)
 
 ## Data 
 
@@ -251,9 +255,9 @@ This Power BI dashboard was created to analyze the Bank Marketing dataset with t
 
 - Top Client Profiles: Lists client profiles with the highest total count and highest conversion rates based on job, marital status, and education.
 
-  ## DAX: calculated measures and columns
+## DAX
 
-  ### Calculated measures
+### Calculated measures
 
 - **Total Clients**: `= COUNTROWS('public bank_data')`
 - **Clients With Deposit**: `= CALCULATE(COUNTROWS('public bank_data'), 'public bank_data'[deposit]= "yes")`
@@ -295,12 +299,14 @@ RETURN
 - **Client Profile**: Combines job, marital status, and education into a single profile string.
 
 ```dax
+
 Client Profile = 
 'public bank_data'[job] & " - " & 'public bank_data'[marital] & " - " & 'public bank_data'[education]
+
 ```
 - **Count of Client Profile**: Counts how many times each client profile appears, useful for filtering profiles with a significant number of clients.
 
-  ```dax
+```dax
 Count of client profile = 
 CALCULATE(
     COUNTROWS('public bank_data'),
@@ -310,14 +316,15 @@ CALCULATE(
     )
 )
 ```
-
-🔹 General Results:
+## General Results:
 
 - Overall conversion rate: 11.70% (5,289 clients out of 45,000).
 
 - Previous campaign success and client balance are among the strongest predictors of conversion.
 
 - Younger clients, retirees, and students are priority segments for future marketing efforts.
+
+## Dashboard
 
 The dashboard allows dynamic filtering by age group, balance group, contact method, and education level, offering a flexible exploration of the data and supporting data-driven marketing strategies.
 
