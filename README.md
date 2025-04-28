@@ -10,7 +10,7 @@ In this project, I used the Bank Marketing dataset to conduct an exploratory ana
 
 ## Data 
 
-📂 [bank-full.csv](): Original dataset in CSV format. From [https://archive.ics.uci.edu/dataset/222/bank+marketing](https://archive.ics.uci.edu/dataset/222/bank+marketing)
+📂 [bank-full.csv](./bank-full.csv): Original dataset in CSV format. From [https://archive.ics.uci.edu/dataset/222/bank+marketing](https://archive.ics.uci.edu/dataset/222/bank+marketing)
 
 ### Variables from the dataset
 
